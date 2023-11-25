@@ -1,0 +1,2 @@
+[] - figure out supabase env vars in CI
+[] - mock database/API calls
