@@ -2,7 +2,7 @@ import Link from "next/link";
 import { WorkspaceList } from "./WorkspaceList";
 import { createClient } from "../../utils/supabase/client";
 
-export type Workspace = { id: string; title: string };
+export type Workspace = { id: string; title: string; description: string };
 
 export default async function Page() {
   const workspaces = await getWorkSpaces();
