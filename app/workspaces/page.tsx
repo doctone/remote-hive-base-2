@@ -27,6 +27,6 @@ export default async function Page() {
 async function getWorkSpaces(): Promise<{
   workspaces: [{ id: string; title: string }];
 }> {
-  const data = await fetch(`http://localhost:3000/api/workspaces`);
+  const data = await fetch(`${process.env.BASE_URL}/api/workspaces`);
   return data.json();
 }
