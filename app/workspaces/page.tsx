@@ -2,6 +2,10 @@ import Link from "next/link";
 import { WorkspaceList } from "./WorkspaceList";
 import axios from "axios";
 
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : process.env.BASE_URL ?? "http://localhost:3000";
+
 export type Workspace = { id: string; title: string };
 
 export default async function Page() {
@@ -29,7 +33,7 @@ export default async function Page() {
 
 async function getWorkSpaces(): Promise<{ workspaces: Workspace[] }> {
   const { data } = await axios.get<any, { data: { workspaces: Workspace[] } }>(
-    `${process.env.BASE_URL}/api/workspaces`
+    defaultUrl
   );
 
   return data;
