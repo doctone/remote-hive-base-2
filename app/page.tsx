@@ -3,6 +3,7 @@ import AuthButton from "../components/AuthButton";
 import { createClient } from "@/utils/supabase/server";
 import Header from "@/components/Header";
 import { cookies } from "next/headers";
+import WorkspaceButton from "../components/WorkspaceButton";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -31,6 +32,7 @@ export default async function Index() {
 
       <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
         <Header />
+        <WorkspaceButton />
         <main className="flex-1 flex flex-col gap-6"></main>
       </div>
 
