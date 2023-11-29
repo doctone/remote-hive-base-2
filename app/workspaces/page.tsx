@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { WorkspaceList } from "./WorkspaceList";
-import axios from "axios";
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.BASE_URL ?? "http://localhost:3000";
+import { createClient } from "../../utils/supabase/client";
 
 export type Workspace = { id: string; title: string };
 
 export default async function Page() {
-  const data = await getWorkSpaces();
+  const workspaces = await getWorkSpaces();
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
@@ -24,17 +20,18 @@ export default async function Page() {
       <main>
         <h1 className="gap-20 text-3xl m-20">Workspaces</h1>
         <section>
-          <WorkspaceList workspaces={data.workspaces} />
+          {workspaces && <WorkspaceList workspaces={workspaces} />}
         </section>
       </main>
     </div>
   );
 }
 
-async function getWorkSpaces(): Promise<{ workspaces: Workspace[] }> {
-  const { data } = await axios.get<any, { data: { workspaces: Workspace[] } }>(
-    defaultUrl
-  );
+async function getWorkSpaces(): Promise<Workspace[] | null> {
+  const supabase = createClient();
+  const { data: workspaces } = await supabase
+    .from("workspace")
+    .select<"workspace", Workspace>();
 
-  return data;
+  return workspaces;
 }
