@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { WorkspaceList } from "./WorkspaceList";
+import axios from "axios";
+
+export type Workspace = { id: string; title: string };
 
 export default async function Page() {
   const data = await getWorkSpaces();
@@ -24,9 +27,10 @@ export default async function Page() {
   );
 }
 
-async function getWorkSpaces(): Promise<{
-  workspaces: [{ id: string; title: string }];
-}> {
-  const data = await fetch(`${process.env.BASE_URL}/api/workspaces`);
-  return data.json();
+async function getWorkSpaces(): Promise<{ workspaces: Workspace[] }> {
+  const { data } = await axios.get<any, { data: { workspaces: Workspace[] } }>(
+    `${process.env.BASE_URL}/api/workspaces`
+  );
+
+  return data;
 }

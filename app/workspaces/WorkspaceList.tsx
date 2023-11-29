@@ -1,10 +1,10 @@
 "use client";
 
-export function WorkspaceList({
-  workspaces,
-}: {
-  workspaces: [{ id: string; title: string }];
-}) {
+import { Workspace } from "./page";
+
+export function WorkspaceList({ workspaces }: { workspaces: Workspace[] }) {
+  console.log(workspaces);
+
   return (
     <div>
       {workspaces.map(({ id, title }) => (
