@@ -1,2 +1,11 @@
-[] - figure out supabase env vars in CI
-[] - mock database/API calls
+- Front end
+  - [] workspace cards
+  - [] add a workspace form
+
+- Back end
+  - [] model workspaces
+    - [] ratings
+    - [] user join tables
+
+- Ops
+  - [] deploy api and next server

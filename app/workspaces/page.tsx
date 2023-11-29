@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BASE_URL } from "../api/route";
 import { WorkspaceList } from "./WorkspaceList";
 
 export default async function Page() {
@@ -28,6 +27,6 @@ export default async function Page() {
 async function getWorkSpaces(): Promise<{
   workspaces: [{ id: string; title: string }];
 }> {
-  const data = await fetch(`${BASE_URL}/api/workspaces`);
+  const data = await fetch(`http://localhost:3000/api/workspaces`);
   return data.json();
 }
