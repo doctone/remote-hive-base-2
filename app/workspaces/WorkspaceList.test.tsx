@@ -4,7 +4,17 @@ import { describe, expect, it } from "vitest";
 
 describe("Workspaces", () => {
   it("renders list", () => {
-    render(<WorkspaceList workspaces={[{ id: "test", title: "test" }]} />);
+    render(
+      <WorkspaceList
+        workspaces={[
+          {
+            id: "test",
+            title: "test",
+            description: "this describes my workspaces",
+          },
+        ]}
+      />
+    );
     expect(screen.getByText("test")).toBeInTheDocument();
   });
 });
