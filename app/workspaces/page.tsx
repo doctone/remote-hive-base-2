@@ -20,14 +20,6 @@ export default async function Page() {
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <main>
-        <div className="flex text-3xl gap-10 m-10">
-          <h1>Workspaces</h1>
-          {user && (
-            <Link href={`/workspaces/${user.id}`} className="text-purple-800">
-              My Workspaces
-            </Link>
-          )}
-        </div>
         <section>
           {workspaces && <WorkspaceList workspaces={workspaces} />}
         </section>
