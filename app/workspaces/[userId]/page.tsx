@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { Workspace } from "../page";
 import { redirect } from "next/navigation";
 import { WorkspaceList } from "../WorkspaceList";
+import Link from "next/link";
 
 export default async function Page({ params }: { params: { userId: string } }) {
   const cookieStore = cookies();
@@ -23,9 +24,6 @@ export default async function Page({ params }: { params: { userId: string } }) {
   return (
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div>
-        <button className="bg-purple-700 rounded-md px-4 py-2 text-foreground mb-2">
-          + Add a workspace{" "}
-        </button>
         <section>
           {workspaces && <WorkspaceList workspaces={workspaces} />}
         </section>

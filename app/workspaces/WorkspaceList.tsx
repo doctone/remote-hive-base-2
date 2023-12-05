@@ -4,12 +4,12 @@ import { Workspace } from "./page";
 
 export function WorkspaceList({ workspaces }: { workspaces: Workspace[] }) {
   return (
-    <div className="flex gap-10 flex-wrap">
+    <div className="flex gap-10 flex-col w-4/5 justify-center">
       {workspaces.map(({ id, title, description }) => (
         <a
           href="#"
           key={id}
-          className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}

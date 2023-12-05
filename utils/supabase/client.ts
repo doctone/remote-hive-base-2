@@ -9,8 +9,6 @@ export const createClient = () =>
   );
 
 export const canInitSupabaseClient = (cookieStore: ReadonlyRequestCookies) => {
-  // This function is just for the interactive tutorial.
-  // Feel free to remove it once you have Supabase connected.
   try {
     createClientFromCookies(cookieStore);
     return true;
