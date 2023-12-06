@@ -3,7 +3,12 @@ import { createClient } from "../../utils/supabase/client";
 
 export const revalidate = 0;
 
-export type Workspace = { id: string; title: string; description: string };
+export type TWorkspace = {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+};
 
 export default async function Page() {
   const workspaces = await getWorkSpaces();
@@ -19,11 +24,11 @@ export default async function Page() {
   );
 }
 
-async function getWorkSpaces(): Promise<Workspace[] | null> {
+async function getWorkSpaces(): Promise<TWorkspace[] | null> {
   const supabase = createClient();
   const { data: workspaces } = await supabase
     .from("workspace")
-    .select<any, Workspace>();
+    .select<any, TWorkspace>();
 
   return workspaces;
 }

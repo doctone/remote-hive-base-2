@@ -1,13 +1,12 @@
 import { createClient as createClientFromCookies } from "@/utils/supabase/server";
-import { createClient } from "../../../utils/supabase/client";
 
 import { cookies } from "next/headers";
-import { Workspace } from "../page";
 import { redirect } from "next/navigation";
-import { WorkspaceList } from "../WorkspaceList";
-import Link from "next/link";
+import { WorkspaceList } from "../../workspaces/WorkspaceList";
+import { createClient } from "../../../utils/supabase/client";
+import { TWorkspace } from "../../workspaces/page";
 
-export default async function Page({ params }: { params: { userId: string } }) {
+export default async function Page() {
   const cookieStore = cookies();
 
   const supabase = createClientFromCookies(cookieStore);
@@ -32,11 +31,11 @@ export default async function Page({ params }: { params: { userId: string } }) {
   );
 }
 
-async function getWorkSpaces(id: string): Promise<Workspace[] | undefined> {
+async function getWorkSpaces(id: string): Promise<TWorkspace[] | undefined> {
   const supabase = createClient();
   const { data: workspaces } = await supabase
     .from("workspaceuser")
-    .select<"workspace(*)", { workspace: Workspace }>("workspace(*)")
+    .select<"workspace(*)", { workspace: TWorkspace }>("workspace(*)")
     .eq("userid", id);
 
   return workspaces?.map(({ workspace }) => workspace);

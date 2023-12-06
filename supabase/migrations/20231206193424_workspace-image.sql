@@ -1,0 +1,1 @@
+alter table "public"."workspace" add column "imageUrl" text;

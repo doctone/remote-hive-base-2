@@ -1,23 +1,19 @@
 "use client";
 
-import { Workspace } from "./page";
+import { TWorkspace as TWorkspace } from "./page";
+import Workspace from "./Workspace";
 
-export function WorkspaceList({ workspaces }: { workspaces: Workspace[] }) {
+export function WorkspaceList({ workspaces }: { workspaces: TWorkspace[] }) {
   return (
-    <div className="flex gap-10 flex-col w-4/5 justify-center">
-      {workspaces.map(({ id, title, description }) => (
-        <a
-          href="#"
+    <div className="flex gap-10 flex-col w-full justify-center">
+      {workspaces.map(({ id, title, description, imageUrl }) => (
+        <Workspace
           key={id}
-          className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {title}
-          </h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
-            {description}
-          </p>
-        </a>
+          id={id}
+          description={description}
+          title={title}
+          imageUrl={imageUrl}
+        />
       ))}
     </div>
   );

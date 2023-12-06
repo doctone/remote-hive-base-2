@@ -25,7 +25,7 @@ export default async function WorkspaceLayout({
         <div className="flex self-start text-3xl gap-10 m-10">
           <Link href="/workspaces">All Workspaces</Link>
           {user && (
-            <Link href={`/workspaces/${user.id}`} className="text-purple-800">
+            <Link href={`/user/${user.id}`} className="text-purple-800">
               My Workspaces
             </Link>
           )}
