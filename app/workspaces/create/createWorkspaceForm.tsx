@@ -1,14 +1,19 @@
 "use client";
 
+import Notification, { notify } from "../../../components/Notification";
+
 function createWorkspaceForm({
   addWorkspace,
 }: {
   addWorkspace: (formData: FormData) => Promise<void>;
 }) {
   const onAction = async (formData: FormData) => {
+    console.log({ formData });
+
     addWorkspace(formData)
       .then(() => {
-        alert("workspace added!");
+        notify("workspace added!", "success");
+
         (
           document.getElementById("workspace-form") as unknown as {
             reset: () => void;
@@ -16,9 +21,10 @@ function createWorkspaceForm({
         ).reset();
       })
       .catch((error) => {
-        console.log(error);
-
-        alert(`Something went wrong: ${JSON.stringify(error.message)}`);
+        notify(
+          `Something went wrong: ${JSON.stringify(error.message)}`,
+          "error"
+        );
       });
   };
   return (
@@ -56,6 +62,7 @@ function createWorkspaceForm({
       >
         Add Workspace{" "}
       </button>
+      <Notification />
     </form>
   );
 }

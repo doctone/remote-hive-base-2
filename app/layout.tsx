@@ -36,7 +36,7 @@ export default async function RootLayout({
           </Link>
           {isSupabaseConnected && <AuthButton />}
         </nav>
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="min-h-[90vh] flex flex-col items-center">
           {children}
         </main>
       </body>

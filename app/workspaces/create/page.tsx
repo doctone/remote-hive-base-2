@@ -15,6 +15,7 @@ export default async function Page() {
     const { error } = await supabase
       .from("workspace")
       .insert({ title, description });
+
     if (error) throw error;
   };
   return <CreateWorkspaceForm addWorkspace={addWorkspace} />;

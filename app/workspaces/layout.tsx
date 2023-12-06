@@ -20,7 +20,7 @@ export default async function WorkspaceLayout({
     redirect("/login");
   }
   return (
-    <div className="min-h-screen w-full flex flex-col items-start">
+    <div className="min-h-[90vh] w-full flex flex-col items-start">
       <div className="flex items-center w-full justify-between px-20">
         <div className="flex self-start text-3xl gap-10 m-10">
           <Link href="/workspaces">All Workspaces</Link>
@@ -33,7 +33,7 @@ export default async function WorkspaceLayout({
         <div className="">
           <Link
             className="bg-purple-700 rounded-md px-4 py-2 text-foreground mb-2"
-            href={`/workspaces/${user.id}/create`}
+            href={`/workspaces/create`}
           >
             + Add a workspace{" "}
           </Link>
