@@ -1,25 +1,14 @@
-import { createClient } from "@/utils/supabase/server";
+"use client";
 import Link from "next/link";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { User } from "@supabase/supabase-js";
 
-export default async function AuthButton() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const signOut = async () => {
-    "use server";
-
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
-    await supabase.auth.signOut();
-    return redirect("/login");
-  };
-
+export default function AuthButton({
+  user,
+  signOut,
+}: {
+  user: User | null;
+  signOut: () => Promise<void>;
+}) {
   return user ? (
     <div className="flex gap-2 items-center">
       Hey, {user.email}!
