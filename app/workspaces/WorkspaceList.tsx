@@ -2,8 +2,17 @@
 
 import { TWorkspace as TWorkspace } from "./page";
 import Workspace from "./Workspace";
+import Notification from "../../components/Notification";
 
-export function WorkspaceList({ workspaces }: { workspaces: TWorkspace[] }) {
+export function WorkspaceList({
+  workspaces,
+  addToFavourites,
+  userId,
+}: {
+  workspaces: TWorkspace[];
+  addToFavourites: (userId: string, workspaceId: string) => Promise<void>;
+  userId: string;
+}) {
   return (
     <div className="flex gap-10 flex-col w-full justify-center">
       {workspaces.map(({ id, title, description, imageUrl }) => (
@@ -13,8 +22,11 @@ export function WorkspaceList({ workspaces }: { workspaces: TWorkspace[] }) {
           description={description}
           title={title}
           imageUrl={imageUrl}
+          addToFavourites={addToFavourites}
+          userId={userId}
         />
       ))}
+      <Notification />
     </div>
   );
 }

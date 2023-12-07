@@ -8,8 +8,6 @@ function createWorkspaceForm({
   addWorkspace: (formData: FormData) => Promise<void>;
 }) {
   const onAction = async (formData: FormData) => {
-    console.log({ formData });
-
     addWorkspace(formData)
       .then(() => {
         notify("workspace added!", "success");

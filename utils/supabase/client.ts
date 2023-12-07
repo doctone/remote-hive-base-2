@@ -16,3 +16,13 @@ export const canInitSupabaseClient = (cookieStore: ReadonlyRequestCookies) => {
     return false;
   }
 };
+
+export const getUser = async (cookieStore: ReadonlyRequestCookies) => {
+  const supabase = createClientFromCookies(cookieStore);
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return user;
+};

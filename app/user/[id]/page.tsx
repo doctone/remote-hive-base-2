@@ -1,20 +1,13 @@
-import { createClient as createClientFromCookies } from "@/utils/supabase/server";
-
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { WorkspaceList } from "../../workspaces/WorkspaceList";
-import { createClient } from "../../../utils/supabase/client";
+import { createClient, getUser } from "../../../utils/supabase/client";
 import { TWorkspace } from "../../workspaces/page";
+import Favourites from "./Favourites";
 
 export default async function Page() {
   const cookieStore = cookies();
 
-  const supabase = createClientFromCookies(cookieStore);
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
+  const user = await getUser(cookieStore);
   if (!user) {
     return redirect("/login");
   }
@@ -24,7 +17,7 @@ export default async function Page() {
     <div className="flex-1 w-full flex flex-col gap-20 items-center">
       <div>
         <section>
-          {workspaces && <WorkspaceList workspaces={workspaces} />}
+          {workspaces && <Favourites workspaces={workspaces} />}
         </section>
       </div>
     </div>
@@ -36,7 +29,7 @@ async function getWorkSpaces(id: string): Promise<TWorkspace[] | undefined> {
   const { data: workspaces } = await supabase
     .from("workspaceuser")
     .select<"workspace(*)", { workspace: TWorkspace }>("workspace(*)")
-    .eq("userid", id);
+    .eq("userId", id);
 
   return workspaces?.map(({ workspace }) => workspace);
 }
