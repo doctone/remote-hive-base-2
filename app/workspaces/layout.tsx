@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createClient as createClientFromCookies } from "@/utils/supabase/server";
 
+export const revalidate = 0;
+
 export default async function WorkspaceLayout({
   children,
 }: {

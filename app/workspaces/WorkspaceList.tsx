@@ -15,7 +15,7 @@ export function WorkspaceList({
 }) {
   return (
     <div className="flex gap-10 flex-col w-full justify-center">
-      {workspaces.map(({ id, title, description, imageUrl }) => (
+      {workspaces.map(({ id, title, description, imageUrl, isFavourite }) => (
         <Workspace
           key={id}
           id={id}
@@ -24,6 +24,7 @@ export function WorkspaceList({
           imageUrl={imageUrl}
           addToFavourites={addToFavourites}
           userId={userId}
+          isFavourite={isFavourite}
         />
       ))}
       <Notification />

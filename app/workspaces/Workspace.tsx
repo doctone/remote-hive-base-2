@@ -1,5 +1,4 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FavouriteIcon } from "../../components/Icons/FavouriteIcon";
 import { notify } from "../../components/Notification";
 
@@ -10,21 +9,28 @@ export default function Workspace({
   imageUrl,
   addToFavourites,
   userId,
+  isFavourite,
 }: {
   id: string;
   title: string;
   description: string;
   imageUrl: string;
   userId: string;
+  isFavourite: boolean;
   addToFavourites: (userId: string, workspaceId: string) => Promise<void>;
 }) {
+  const router = useRouter();
   const handleAddToFavourites = async () => {
     addToFavourites(userId, id)
-      .then(() => notify("Added to favourites", "success"))
+      .then(() => {
+        notify("Added to favourites", "success");
+        router.refresh();
+      })
       .catch((error) =>
         notify(`there was a problem: ${error.message}`, "error")
       );
   };
+
   return (
     <div className="flex w-full items-center bg-white border border-gray-200 shadow flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
       <img className="object-cover w-1/4 h-96" src={imageUrl} alt="" />
@@ -40,10 +46,11 @@ export default function Workspace({
         <div className="flex justify-start">
           <button
             onClick={handleAddToFavourites}
+            disabled={isFavourite}
             className="w-1/8 flex flex-col items-center bg-transparent text-red-700 font-semibold hover:text-white py-2 px-4 rounded"
           >
-            <FavouriteIcon />
-            Add to favourites
+            <FavouriteIcon favourite={isFavourite} />
+            {isFavourite ? "One of your favourites" : "Add to favourites"}
           </button>
         </div>
       </div>

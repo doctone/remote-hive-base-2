@@ -1,6 +1,6 @@
 import { WorkspaceList } from "./WorkspaceList";
 import { createClient, getUser } from "../../utils/supabase/client";
-
+import { cache } from "react";
 import { cookies } from "next/headers";
 import { createClient as createClientFromCookies } from "../../utils/supabase/server";
 import { redirect } from "next/navigation";
@@ -12,14 +12,16 @@ export type TWorkspace = {
   title: string;
   description: string;
   imageUrl: string;
+  isFavourite: boolean;
 };
 
 export default async function Page() {
-  const workspaces = await getWorkSpaces();
   const cookieStore = cookies();
-
   const user = await getUser(cookieStore);
-
+  if (!user) {
+    redirect("/login");
+  }
+  const workspaces = await getWorkSpaces(user.id);
   const addWorkspaceToFavourites = async (
     userId: string,
     workspaceId: string
@@ -36,9 +38,6 @@ export default async function Page() {
     if (error) throw error;
   };
 
-  if (!user) {
-    redirect("/login");
-  }
   return (
     <div className="flex-1 w-full flex flex-col gap-20">
       <main>
@@ -56,11 +55,29 @@ export default async function Page() {
   );
 }
 
-async function getWorkSpaces(): Promise<TWorkspace[] | null> {
-  const supabase = createClient();
-  const { data: workspaces } = await supabase
-    .from("workspace")
-    .select<any, TWorkspace>();
+const getWorkSpaces = cache(
+  async (id: string): Promise<TWorkspace[] | null> => {
+    const supabase = createClient();
+    const { data: workspaces } = await supabase
+      .from("workspace")
+      .select<any, TWorkspace>();
 
-  return workspaces;
-}
+    const { data: favourites } = await supabase
+      .from("workspaceuser")
+      .select<"workspace(id)", { workspace: { id: string } }>("workspace(id)")
+      .eq("userId", id);
+
+    const favouriteIds = favourites?.map(({ workspace }) => workspace.id);
+
+    if (!workspaces) return [];
+    return workspaces.map((workspace) => {
+      workspace.id;
+      const isFavourite = favouriteIds?.includes(workspace.id);
+
+      return {
+        ...workspace,
+        isFavourite: !!isFavourite,
+      };
+    });
+  }
+);
