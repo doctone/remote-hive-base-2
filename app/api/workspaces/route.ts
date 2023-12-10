@@ -9,7 +9,7 @@ type TWorkspace = {
   isFavourite: boolean;
 };
 
-export async function GET(request: NextRequest) {
+async function GET(request: NextRequest) {
   const supabase = createClient();
   const { data: workspaces } = await supabase
     .from("workspace")
@@ -38,5 +38,6 @@ export async function GET(request: NextRequest) {
       isFavourite: !!isFavourite,
     };
   });
+  // incorrect response??
   return NextResponse.json({ workspaces: result });
 }
