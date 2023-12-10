@@ -23,8 +23,8 @@ export default async function WorkspaceLayout({
   }
   return (
     <div className="min-h-[90vh] w-full flex flex-col items-start">
-      <div className="flex items-center w-full justify-between px-20">
-        <div className="flex self-start text-3xl gap-10 m-10">
+      <div className="flex items-center w-full justify-between md:px-20 gap-10 flex-col md:flex-row">
+        <div className="flex self-start text-3xl gap-10 md:m-10">
           <Link href="/workspaces">All Workspaces</Link>
           {user && (
             <Link href={`/user/${user.id}`} className="text-purple-800">
@@ -32,7 +32,7 @@ export default async function WorkspaceLayout({
             </Link>
           )}
         </div>
-        <div className="">
+        <div className="m-5">
           <Link
             className="bg-purple-700 rounded-md px-4 py-2 text-foreground mb-2"
             href={`/workspaces/create`}

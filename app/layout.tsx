@@ -39,7 +39,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
-        <nav className="px-20 mb-10 w-full flex justify-between border-b border-b-foreground/10 h-16 items-center gap-10">
+        <nav className="md:px-20 mb-10 w-full flex justify-between border-b border-b-foreground/10 h-16 items-center gap-10">
           <Link
             className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
             href="/"
