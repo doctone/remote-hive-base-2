@@ -1,14 +1,9 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import {
-  canInitSupabaseClient,
-  createClient,
-  getUser,
-} from "../utils/supabase/client";
+import { canInitSupabaseClient, getUser } from "../utils/supabase/client";
 import { cookies } from "next/headers";
 import AuthButton from "../components/AuthButton";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -25,17 +20,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = cookies();
-  const user = await getUser(cookieStore);
-  const signOut = async () => {
-    "use server";
-
-    const supabase = createClient();
-    await supabase.auth.signOut({ scope: "global" });
-    return redirect("/login");
-  };
-
-  const isSupabaseConnected = canInitSupabaseClient(cookieStore);
   return (
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
@@ -46,7 +30,7 @@ export default async function RootLayout({
           >
             Home
           </Link>
-          {isSupabaseConnected && <AuthButton user={user} signOut={signOut} />}
+          <AuthButton />
         </nav>
         <main className="min-h-[90vh] flex flex-col items-center">
           {children}

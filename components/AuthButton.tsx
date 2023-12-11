@@ -1,24 +1,33 @@
-"use client";
+import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
-import { User } from "@supabase/supabase-js";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function AuthButton({
-  user,
-  signOut,
-}: {
-  user: User | null;
-  signOut: () => Promise<void>;
-}) {
+export default async function AuthButton() {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const signOut = async () => {
+    "use server";
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    await supabase.auth.signOut();
+    return redirect("/login");
+  };
+
   return user ? (
-    <div className="flex gap-2 items-center">
+    <div className="flex items-center gap-4">
       Hey, {user.email}!
-      <Link
-        href="/login"
-        onClick={signOut}
-        className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-      >
-        Logout
-      </Link>
+      <form action={signOut}>
+        <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
+          Logout
+        </button>
+      </form>
     </div>
   ) : (
     <Link
