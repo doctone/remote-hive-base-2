@@ -12,12 +12,12 @@ export default async function WorkspacePage({
   if (!data) return <div>Workspace not found</div>;
   const workspace = data[0];
   return (
-    <div className="flex px-20">
-      <div className="w-1/2 rounded flex flex-col gap-5">
+    <div className="flex md:px-20 flex-col md:flex-row items-center md:items-start">
+      <div className="w-3/4 md:w-1/2 rounded flex flex-col gap-5">
         <img src={workspace.imageUrl} alt="" className="rounded-2xl" />
         <RatingSummary />
       </div>
-      <div className="w-1/2 p-5 flex flex-col gap-5">
+      <div className="md:w-1/2 p-5 flex flex-col gap-5">
         <h1 className="text-5xl">{workspace.title}</h1>
         <h5 className="text-md mb-">{workspace.description}</h5>
         <h2 className="text-2xl">My Rating</h2>
