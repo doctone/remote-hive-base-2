@@ -22,8 +22,8 @@ export default async function WorkspaceLayout({
     redirect("/login");
   }
   return (
-    <div className="min-h-[90vh] w-full flex flex-col items-start">
-      <div className="mb-10 flex items-center w-full justify-between md:px-20 gap-10 flex-col md:flex-row">
+    <div className="min-h-[90vh] mt-5 w-full flex flex-col items-start">
+      <div className="mb-5 flex items-center w-full justify-between md:px-20 md:gap-10 flex-col md:flex-row">
         <Tabs userId={user.id} />
         <div className="m-5">
           <Link
