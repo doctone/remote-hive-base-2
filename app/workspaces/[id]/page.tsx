@@ -20,7 +20,7 @@ export default async function WorkspacePage({
       <div className="w-1/2 p-5 flex flex-col gap-5">
         <h1 className="text-5xl">{workspace.title}</h1>
         <h5 className="text-md mb-">{workspace.description}</h5>
-        <h2 className="text-5xl">Rate Me</h2>
+        <h2 className="text-2xl">My Rating</h2>
         <div className="w-2/3">
           <div className="flex gap-5 justify-between">
             <label htmlFor="wifi">WiFi</label>
