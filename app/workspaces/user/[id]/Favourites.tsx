@@ -1,5 +1,5 @@
 import React from "react";
-import { TWorkspace } from "../../workspaces/page";
+import { TWorkspace } from "../../page";
 
 function Favourites({ workspaces }: { workspaces: TWorkspace[] }) {
   return (

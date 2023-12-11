@@ -1,8 +1,8 @@
-import { GeistSans } from "geist/font";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { cookies } from "next/headers";
 import { createClient as createClientFromCookies } from "@/utils/supabase/server";
+import Tabs from "../../components/Tabs";
 
 export const revalidate = 0;
 
@@ -23,15 +23,8 @@ export default async function WorkspaceLayout({
   }
   return (
     <div className="min-h-[90vh] w-full flex flex-col items-start">
-      <div className="flex items-center w-full justify-between md:px-20 gap-10 flex-col md:flex-row">
-        <div className="flex self-start text-3xl gap-10 md:m-10">
-          <Link href="/workspaces">All Workspaces</Link>
-          {user && (
-            <Link href={`/user/${user.id}`} className="text-purple-800">
-              My Workspaces
-            </Link>
-          )}
-        </div>
+      <div className="mb-10 flex items-center w-full justify-between md:px-20 gap-10 flex-col md:flex-row">
+        <Tabs userId={user.id} />
         <div className="m-5">
           <Link
             className="bg-purple-700 rounded-md px-4 py-2 text-foreground mb-2"
