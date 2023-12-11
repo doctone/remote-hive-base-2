@@ -50,7 +50,7 @@ export default function Workspace({
             className="w-1/8 flex flex-col items-center bg-transparent text-red-700 font-semibold hover:text-white py-2 px-4 rounded"
           >
             <FavouriteIcon favourite={isFavourite} />
-            {isFavourite ? "One of your favourites" : "Add to favourites"}
+            {isFavourite ? "" : "Add to favourites"}
           </button>
         </div>
       </div>

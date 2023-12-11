@@ -1,13 +1,14 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 function Tabs({ userId }: { userId: string }) {
-  const params = useParams();
-  const isFavouriteActive = !!params.id;
+  const path = usePathname();
+
+  const isFavouriteActive = path.includes("user");
 
   const activeClass =
-    "bg-gray-100 text-blue-600 dark:bg-gray-800 dark:text-blue-500";
+    "bg-gray-100 text-purple-600 dark:bg-gray-800 dark:text-purple-500";
 
   return (
     <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
