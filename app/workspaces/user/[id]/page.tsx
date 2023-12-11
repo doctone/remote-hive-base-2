@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { createClient, getUser } from "../../../utils/supabase/client";
-import { TWorkspace } from "../../workspaces/page";
+import { createClient, getUser } from "../../../../utils/supabase/client";
+import { TWorkspace } from "../../page";
 import Favourites from "./Favourites";
 
 export default async function Page() {

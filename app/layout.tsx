@@ -1,7 +1,5 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import { canInitSupabaseClient, getUser } from "../utils/supabase/client";
-import { cookies } from "next/headers";
 import AuthButton from "../components/AuthButton";
 import Link from "next/link";
 
@@ -30,6 +28,7 @@ export default async function RootLayout({
           >
             Home
           </Link>
+          {/* @ts-ignore */}
           <AuthButton />
         </nav>
         <main className="min-h-[90vh] flex flex-col items-center">
