@@ -6,11 +6,11 @@ import Notification from "../../components/Notification";
 
 export function WorkspaceList({
   workspaces,
-  addToFavourites,
+
   userId,
 }: {
   workspaces: TWorkspace[];
-  addToFavourites: (userId: string, workspaceId: string) => Promise<void>;
+
   userId: string;
 }) {
   return (
@@ -22,9 +22,6 @@ export function WorkspaceList({
           description={description}
           title={title}
           imageUrl={imageUrl}
-          addToFavourites={addToFavourites}
-          userId={userId}
-          isFavourite={isFavourite}
         />
       ))}
       <Notification />

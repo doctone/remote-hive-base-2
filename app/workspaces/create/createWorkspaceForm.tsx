@@ -53,6 +53,16 @@ function createWorkspaceForm({
           required
         />
       </div>
+      <div className="flex flex-col mb-5 gap-2">
+        <label className="text-md" htmlFor="imageUrl">
+          Image Url
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          name="imageUrl"
+          placeholder="Enter an image URL for your workspace ( Image upload coming soon )"
+        />
+      </div>
       <button
         formAction={onAction}
         type="submit"

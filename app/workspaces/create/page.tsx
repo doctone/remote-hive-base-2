@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 import CreateWorkspaceForm from "./createWorkspaceForm";
 
 export default async function Page() {
@@ -8,13 +7,13 @@ export default async function Page() {
     "use server";
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
-
+    const imageUrl = formData.get("imageUrl") as string;
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
 
     const { error } = await supabase
       .from("workspace")
-      .insert({ title, description });
+      .insert({ title, description, imageUrl });
 
     if (error) throw error;
   };

@@ -22,32 +22,13 @@ export default async function Page() {
     redirect("/login");
   }
   const workspaces = await getWorkSpaces(user.id);
-  const addWorkspaceToFavourites = async (
-    userId: string,
-    workspaceId: string
-  ) => {
-    "use server";
-
-    const cookieStore = cookies();
-    const supabase = createClientFromCookies(cookieStore);
-
-    const { error } = await supabase
-      .from("workspaceuser")
-      .insert({ userId, workspaceId });
-
-    if (error) throw error;
-  };
 
   return (
     <div className="flex-1 w-full flex flex-col gap-20">
       <main>
-        <section className="flex justify-center px-20">
+        <section className="flex justify-center px-5 md:px-20">
           {workspaces && (
-            <WorkspaceList
-              workspaces={workspaces}
-              addToFavourites={addWorkspaceToFavourites}
-              userId={user.id}
-            />
+            <WorkspaceList workspaces={workspaces} userId={user.id} />
           )}
         </section>
       </main>
