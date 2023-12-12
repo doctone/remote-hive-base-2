@@ -2,10 +2,7 @@ import { WorkspaceList } from "./WorkspaceList";
 import { createClient, getUser } from "../../utils/supabase/client";
 import { cache } from "react";
 import { cookies } from "next/headers";
-import { createClient as createClientFromCookies } from "../../utils/supabase/server";
 import { redirect } from "next/navigation";
-
-export const revalidate = 0;
 
 export type TWorkspace = {
   id: string;

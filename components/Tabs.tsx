@@ -11,7 +11,7 @@ function Tabs({ userId }: { userId: string }) {
     "bg-gray-100 text-purple-600 dark:bg-gray-800 dark:text-purple-500";
 
   return (
-    <ul className="flex w-full flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+    <ul className="flex w-full md:w-2/3 flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
       <li className="w-1/2">
         <a
           href="/workspaces"

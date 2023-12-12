@@ -4,8 +4,6 @@ import { cookies } from "next/headers";
 import { createClient as createClientFromCookies } from "@/utils/supabase/server";
 import Tabs from "../../components/Tabs";
 
-export const revalidate = 0;
-
 export default async function WorkspaceLayout({
   children,
 }: {
@@ -25,7 +23,7 @@ export default async function WorkspaceLayout({
     <div className="min-h-[90vh] mt-5 w-full flex flex-col items-start">
       <div className="mb-5 flex items-center w-full justify-between md:px-20 md:gap-10 flex-col md:flex-row">
         <Tabs userId={user.id} />
-        <div className="mt-5">
+        <div className="mt-5 px-5">
           <Link
             className="bg-purple-700 rounded-md px-4 py-2 text-foreground mb-2"
             href={`/workspaces/create`}
