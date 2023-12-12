@@ -15,14 +15,20 @@ export default function Login({
     const password = formData.get("password") as string;
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
+    try {
+      const res = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (res.error) {
+        console.log(res);
+        console.log("IN HERE");
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      return redirect(`/login?message=${JSON.stringify(error, null, 2)}`);
+        return redirect(`/login?message=${res.error}`);
+      }
+    } catch (err) {
+      console.log(err);
+      return redirect(`/login?message=There was a problem signing in`);
     }
 
     return redirect("/");

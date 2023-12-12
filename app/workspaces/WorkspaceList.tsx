@@ -1,7 +1,7 @@
 "use client";
 
 import { TWorkspace as TWorkspace } from "./page";
-import Workspace from "./Workspace";
+import WorkspaceCard from "./WorkspaceCard";
 import Notification from "../../components/Notification";
 
 export function WorkspaceList({
@@ -15,8 +15,8 @@ export function WorkspaceList({
 }) {
   return (
     <div className="flex gap-10 flex-col w-full justify-center">
-      {workspaces.map(({ id, title, description, imageUrl, isFavourite }) => (
-        <Workspace
+      {workspaces.map(({ id, title, description, imageUrl }) => (
+        <WorkspaceCard
           key={id}
           id={id}
           description={description}

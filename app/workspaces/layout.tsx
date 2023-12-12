@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createClient as createClientFromCookies } from "@/utils/supabase/server";
 import Tabs from "../../components/Tabs";
