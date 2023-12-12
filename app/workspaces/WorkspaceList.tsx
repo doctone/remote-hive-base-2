@@ -1,8 +1,8 @@
 "use client";
 
 import { TWorkspace as TWorkspace } from "./page";
-import WorkspaceCard from "./WorkspaceCard";
 import Notification from "../../components/Notification";
+import WorkspaceCard from "./WorkspaceCard";
 
 export function WorkspaceList({
   workspaces,
