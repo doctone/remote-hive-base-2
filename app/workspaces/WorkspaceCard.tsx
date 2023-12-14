@@ -34,8 +34,12 @@ export default function WorkspaceCard({
 
         <dl className="mt-6 flex gap-4 sm:gap-6">
           <div className="flex flex-col-reverse">
-            <dt className="text-sm font-medium text-gray-600">Published</dt>
-            <dd className="text-xs text-gray-500">31st June, 2021</dd>
+            <a
+              href="#"
+              className="ms-auto text-sm font-medium text-purple-600 hover:underline dark:text-purple-500"
+            >
+              Read all reviews
+            </a>
           </div>
         </dl>
       </div>
@@ -47,7 +51,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center mb-1">
               <div className="w-1/4 bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-400 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 4
@@ -60,7 +64,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center mb-1">
               <div className="w-full bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 8.9
@@ -73,7 +77,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center mb-1">
               <div className="w-1/3 bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 5.1
@@ -86,7 +90,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center">
               <div className="w-full bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 8.9
@@ -99,7 +103,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center">
               <div className="w-3/4 bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 7.5
@@ -112,7 +116,7 @@ export default function WorkspaceCard({
             </dt>
             <dd className="flex items-center">
               <div className="w-4/5 bg-gray-200 rounded h-1.5 dark:bg-gray-700 me-1">
-                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-600 h-1.5 rounded dark:bg-purple-300"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 8.0

@@ -81,7 +81,7 @@ export default function RatingSummary() {
             </dt>
             <dd className="flex items-center mb-3">
               <div className="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 me-2">
-                <div className="bg-purple-600 h-2.5 rounded dark:bg-purple-500"></div>
+                <div className="bg-purple-400 h-2.5 rounded dark:bg-purple-500"></div>
               </div>
               <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 8.9
