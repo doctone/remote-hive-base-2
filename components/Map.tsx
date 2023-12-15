@@ -18,7 +18,7 @@ const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={coords} draggable={true}>
-        <Popup>Hey ! you found me</Popup>
+        <Popup>Hey you found me</Popup>
       </Marker>
     </MapContainer>
   );
