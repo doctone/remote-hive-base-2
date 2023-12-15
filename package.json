@@ -39,5 +39,10 @@
     "supabase": "^1.115.5",
     "vite": "^5.0.3",
     "vitest": "0.34.6"
+  },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
   }
 }
