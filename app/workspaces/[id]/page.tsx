@@ -5,6 +5,7 @@ import { TWorkspace } from "../page";
 import Rating from "../Rating";
 import RatingSummary from "../RatingSummary";
 import ToggleFavourite from "./AddToFavourites";
+import MapSection from "./MapSection";
 
 export default async function WorkspacePage({
   params,
@@ -43,12 +44,12 @@ export default async function WorkspacePage({
 
   if (!workspace) return <div>Workspace not found</div>;
   return (
-    <div className="flex md:px-20 flex-col md:flex-row items-center md:items-start">
-      <div className="w-3/4 md:w-1/2 rounded flex flex-col gap-5">
+    <div className="flex md:px-20 flex-col md:grid md:grid-cols-2 items-center md:items-start">
+      <div className="w-3/4 md:w-full rounded flex flex-col gap-5">
         <img src={workspace.imageUrl} alt="" className="rounded-2xl" />
         <RatingSummary />
       </div>
-      <div className="md:w-1/2 p-5 flex flex-col gap-5 items-center">
+      <div className="md:w-full p-5 flex flex-col gap-5 items-center">
         <h1 className="text-5xl">{workspace.title}</h1>
         <h5 className="text-md mb-">{workspace.description}</h5>
         <h2 className="text-2xl">My Rating</h2>
@@ -80,6 +81,7 @@ export default async function WorkspacePage({
           userId={user?.id}
           isFavourite={workspace.isFavourite}
         />
+        <MapSection />
       </div>
     </div>
   );
