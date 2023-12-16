@@ -43,6 +43,10 @@ export default async function WorkspacePage({
   const workspace = await getWorkspace(params.id, user?.id);
 
   if (!workspace) return <div>Workspace not found</div>;
+  const location = await getLocation(workspace.postcode);
+  const long = location?.result.longitude;
+  const lat = location?.result.latitude;
+
   return (
     <div className="flex md:px-20 flex-col md:grid md:grid-cols-2 items-center md:items-start">
       <div className="w-3/4 md:w-full rounded flex flex-col gap-5">
@@ -81,7 +85,7 @@ export default async function WorkspacePage({
           userId={user?.id}
           isFavourite={workspace.isFavourite}
         />
-        <MapSection />
+        {lat && long && <MapSection lat={lat} lon={long} />}
       </div>
     </div>
   );
@@ -111,4 +115,13 @@ const getWorkspace = async (
     ...workspace,
     isFavourite: !!isFavourite,
   };
+};
+
+const getLocation = async (
+  postcode?: string
+): Promise<{ result: { longitude: number; latitude: number } } | null> => {
+  if (!postcode) return null;
+  const res = await fetch(`https://api.postcodes.io/postcodes/${postcode}`);
+  const data = await res.json();
+  return data;
 };

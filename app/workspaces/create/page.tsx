@@ -8,12 +8,13 @@ export default async function Page() {
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const imageUrl = formData.get("imageUrl") as string;
+    const postcode = (formData.get("postcode") as string).replaceAll(" ", "");
     const cookieStore = cookies();
     const supabase = createClient(cookieStore);
 
     const { error } = await supabase
       .from("workspace")
-      .insert({ title, description, imageUrl });
+      .insert({ title, description, imageUrl, postcode });
 
     if (error) throw error;
   };
