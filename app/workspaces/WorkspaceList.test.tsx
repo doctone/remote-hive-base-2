@@ -10,7 +10,6 @@ describe("Workspaces", () => {
   it("renders list", () => {
     render(
       <WorkspaceList
-        addToFavourites={vi.fn()}
         userId="test"
         workspaces={[
           {

@@ -31,17 +31,6 @@ export default function WorkspaceCard({
         <div className="mt-4">
           <p className="max-w-[40ch] text-sm text-gray-500">{description}</p>
         </div>
-
-        <dl className="mt-6 flex gap-4 sm:gap-6">
-          <div className="flex flex-col-reverse">
-            <a
-              href="#"
-              className="ms-auto text-sm font-medium text-purple-600 hover:underline dark:text-purple-500"
-            >
-              Read all reviews
-            </a>
-          </div>
-        </dl>
       </div>
       <div className="hidden lg:flex w-1/3 p-4">
         <div className="w-full">
