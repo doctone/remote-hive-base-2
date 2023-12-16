@@ -21,4 +21,4 @@ jobs:
         with:
           version: latest
 
-      - run: supabase db push --project-ref ${{ secrets.VERCEL_PROJECT_ID }}
+      - run: supabase db push
