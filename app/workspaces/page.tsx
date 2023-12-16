@@ -10,6 +10,7 @@ export type TWorkspace = {
   description: string;
   imageUrl: string;
   isFavourite: boolean;
+  postcode?: string;
 };
 
 export default async function Page() {
