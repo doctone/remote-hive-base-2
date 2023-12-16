@@ -123,5 +123,6 @@ const getLocation = async (
   if (!postcode) return null;
   const res = await fetch(`https://api.postcodes.io/postcodes/${postcode}`);
   const data = await res.json();
-  return data;
+  if (data.status === 200) return data;
+  return null;
 };

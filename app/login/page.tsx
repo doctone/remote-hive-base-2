@@ -21,13 +21,9 @@ export default function Login({
         password,
       });
       if (res.error) {
-        console.log(res);
-        console.log("IN HERE");
-
         return redirect(`/login?message=${res.error}`);
       }
     } catch (err) {
-      console.log(err);
       return redirect(`/login?message=There was a problem signing in`);
     }
 

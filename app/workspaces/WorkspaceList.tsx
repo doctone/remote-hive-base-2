@@ -6,8 +6,6 @@ import WorkspaceCard from "./WorkspaceCard";
 
 export function WorkspaceList({
   workspaces,
-
-  userId,
 }: {
   workspaces: TWorkspace[];
 
@@ -15,14 +13,8 @@ export function WorkspaceList({
 }) {
   return (
     <div className="flex gap-10 flex-col w-full justify-center">
-      {workspaces.map(({ id, title, description, imageUrl }) => (
-        <WorkspaceCard
-          key={id}
-          id={id}
-          description={description}
-          title={title}
-          imageUrl={imageUrl}
-        />
+      {workspaces.map((workspace) => (
+        <WorkspaceCard key={workspace.id} workspace={workspace} />
       ))}
       <Notification />
     </div>
