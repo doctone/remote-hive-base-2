@@ -49,7 +49,7 @@ export default async function WorkspacePage({
 
   return (
     <div className="flex md:px-20 flex-col md:grid md:grid-cols-2 items-center md:items-start">
-      <div className="w-3/4 md:w-full rounded flex flex-col gap-5">
+      <div className="w-5/6 md:w-full rounded flex flex-col gap-5">
         <img src={workspace.imageUrl} alt="" className="rounded-2xl" />
         <RatingSummary />
       </div>

@@ -32,7 +32,6 @@ export default async function WorkspaceLayout({
           </Link>
         </div>
       </div>
-
       {children}
     </div>
   );
