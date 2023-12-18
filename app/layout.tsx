@@ -26,7 +26,7 @@ export default async function RootLayout({
             className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
             href="/"
           >
-            Home
+            Mike
           </Link>
           {/* @ts-ignore */}
           <AuthButton />
