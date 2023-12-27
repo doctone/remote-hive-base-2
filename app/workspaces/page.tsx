@@ -25,6 +25,7 @@ export default async function Page() {
     <div className="flex-1 w-full flex flex-col gap-20">
       <main>
         <section className="flex justify-center px-5 md:px-20">
+          HEY PETER
           {workspaces && (
             <WorkspaceList workspaces={workspaces} userId={user.id} />
           )}
